@@ -1,0 +1,87 @@
+students = []
+n = int(input("Enter number of students: "))
+for i in range(n):
+    print("\nEnter details of student", i + 1) 
+    name = input("Enter student name: ")
+    roll = input("Enter roll number: ")
+   marks = float(input("Enter aggregate marks: "))
+    math = float(input("Enter Mathematics marks: "))
+    science = float(input("Enter Science marks: "))
+    english = float(input("Enter English marks: "))
+
+    attendance = float(input("Enter attendance percentage: "))
+    income = float(input("Enter family annual income: "))
+
+    # Eligibility checking
+    if (marks >= 75 and math >= 60 and science >= 60
+            and english >= 60 and attendance >= 75
+            and income <= 200000):
+
+        students.append([name, roll, marks, attendance, income])
+        print("Eligible for scholarship")
+
+    else:
+        print("Not eligible for scholarship")
+
+# Ranking eligible students
+# Higher aggregate marks get higher rank.
+# If marks are equal, higher attendance gets priority.
+# If both are equal, lower family income gets priority.
+
+students.sort(key=lambda x: (-x[2], -x[3], x[4]))
+
+print("\n----- SCHOLARSHIP RANK LIST -----")
+
+if len(students) == 0:
+    print("No eligible students found.")
+
+output :
+
+
+else:
+    rank = 1
+
+    for student in students:
+        print("\nRank:", rank)
+        print("Name:", student[0])
+        print("Roll Number:", student[1])
+        print("Aggregate Marks:", student[2])
+        print("Attendance:", student[3])
+        print("Family Income:", student[4])
+
+        rank += 1
+
+print("\nScholarship Allocation Completed")
+
+output :
+Enter student name: sita
+Enter roll number: 36
+Enter aggregate marks: 85
+Enter Mathematics marks: 75
+Enter Science marks: 75
+Enter English marks: 80
+Enter attendance percentage: 70
+Enter family annual income: 90
+Not eligible for scholarship
+
+Enter details of student 2
+Enter student name: prasad
+Enter roll number: 28
+Enter aggregate marks: 90
+Enter Mathematics marks: 80
+Enter Science marks: 75
+Enter English marks: 65
+Enter attendance percentage: 82
+Enter family annual income: 79
+Eligible for scholarship
+
+----- SCHOLARSHIP RANK LIST -----
+
+Rank: 1
+Name: prasad
+Roll Number: 28
+Aggregate Marks: 90.0
+Attendance: 82.0
+Family Income: 79.0
+
+Scholarship Allocation Completed
